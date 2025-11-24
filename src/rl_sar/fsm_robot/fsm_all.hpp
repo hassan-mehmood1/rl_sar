@@ -6,6 +6,7 @@
 #ifndef FSM_ALL_HPP
 #define FSM_ALL_HPP
 
+#include "fsm_jamal.hpp"
 #include "fsm_a1.hpp"
 #include "fsm_b2.hpp"
 #include "fsm_b2w.hpp"
