@@ -57,7 +57,12 @@ public:
         0.00, 1.36, -2.65,
         0.00, 1.36, -2.65,
         0.00, 1.36, -2.65,
+<<<<<<< HEAD
         0.00, 1.36, -2.65
+=======
+        0.00, 1.36, -2.65,
+        0.00, 0.00, 0.00, 0.00
+>>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
     };
     bool stand_from_passive = true;
 
@@ -161,7 +166,11 @@ public:
         rl.episode_length_buf = 0;
 
         // read params from yaml
+<<<<<<< HEAD
         rl.config_name = "legged_gym";
+=======
+        rl.config_name = "himloco";
+>>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
         std::string robot_config_path = rl.robot_name + "/" + rl.config_name;
         try
         {
@@ -248,6 +257,10 @@ private:
     std::string initial_state_;
 };
 
+<<<<<<< HEAD
+=======
+// REGISTER_FSM_FACTORY(JamalFSMFactory, "RLFSMStatePassive")
+>>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
 REGISTER_FSM_FACTORY(JAMALFSMFactory, "RLFSMStatePassive")
 
 #endif // JAMAL_FSM_HPP
