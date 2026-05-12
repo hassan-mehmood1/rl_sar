@@ -14,7 +14,6 @@ jamal:
              3.0, 3.0, 3.0]
   num_of_dofs: 12
   wheel_indices: []
-<<<<<<< HEAD
   torque_limits: [100, 100, 100,
                   100, 100, 100,
                   100, 100, 100,
@@ -23,39 +22,23 @@ jamal:
                      0.00, 0.80, -1.50,
                      0.00, 0.60, -1.50,
                      0.00, 0.60, -1.50]
-=======
-  torque_limits: [23.5, 23.5, 23.5,
-                  23.5, 23.5, 23.5,
-                  23.5, 23.5, 23.5,
-                  23.5, 23.5, 23.5]
-  default_dof_pos: [ 0.00, 0.80, -1.50,
-                     0.00, 0.80, -1.50,
-                     0.00, 0.80, -1.50,
-                     0.00, 0.80, -1.50]
->>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
   joint_names: ["FR_hip_joint", "FR_thigh_joint", "FR_calf_joint",
                 "FL_hip_joint", "FL_thigh_joint", "FL_calf_joint",
                 "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint",
                 "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint"]
-<<<<<<< HEAD
 
   # joint_names: ["FL_hip_joint", "FL_thigh_joint", "FL_calf_joint",
   #               "FR_hip_joint", "FR_thigh_joint", "FR_calf_joint",
   #               "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint",
   #               "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint"]
 
-=======
->>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
   joint_controller_names: ["FR_hip_controller", "FR_thigh_controller", "FR_calf_controller",
                            "FL_hip_controller", "FL_thigh_controller", "FL_calf_controller",
                            "RR_hip_controller", "RR_thigh_controller", "RR_calf_controller",
                            "RL_hip_controller", "RL_thigh_controller", "RL_calf_controller"]
-<<<<<<< HEAD
 
   # joint_controller_names: ["FL_hip_controller", "FL_thigh_controller", "FL_calf_controller",
   #                          "FR_hip_controller", "FR_thigh_controller", "FR_calf_controller",
   #                          "RL_hip_controller", "RL_thigh_controller", "RL_calf_controller",
   #                          "RR_hip_controller", "RR_thigh_controller", "RR_calf_controller"]
-=======
->>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
   joint_mapping: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
