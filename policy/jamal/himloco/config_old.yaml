@@ -1,8 +1,8 @@
 # Copyright (c) 2024-2025 Ziqi Fan
 # SPDX-License-Identifier: Apache-2.0
 
-go2/himloco:
-  model_name: "himloco.pt"
+jamal/himloco:
+  model_name: "policy.pt"
   num_observations: 45
   observations: ["commands", "ang_vel", "gravity_vec", "dof_pos", "dof_vel", "actions"]
   observations_history: [0, 1, 2, 3, 4, 5]  # 0 is the latest observation
@@ -16,14 +16,9 @@ go2/himloco:
                        100, 100, 100,
                        100, 100, 100,
                        100, 100, 100]
-  rl_kp: [40, 40, 40,
-          40, 40, 40,
-          40, 40, 40,
-          40, 40, 40]
-  rl_kd: [1, 1, 1,
-          1, 1, 1,
-          1, 1, 1,
-          1, 1, 1]
+  rl_kp: [25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0]
+  rl_kd: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+
   fixed_kp: [60, 60, 60,
              60, 60, 60,
              60, 60, 60,
