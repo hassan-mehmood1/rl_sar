@@ -122,6 +122,16 @@ To use the Mujoco simulator
 ./build.sh -mj  # or ./build.sh --mujoco
 ```
 
+if you get this error
+```
+Could not find a package configuration file provided by "glfw3" with any of the following names: glfw3Config.cmake glfw3-config.cmake
+```
+then do this:
+```
+sudo apt-get update
+sudo apt-get install libglfw3-dev
+```
+
 For detailed usage instructions, you can check them via `./build.sh -h`:
 
 ```bash
