@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Finalized URDF for Gazebo Sim (ROS 2 Humble)
+     - Mesh paths converted to package:// URIs (jamal03_description)
+     - Removed Gazebo Classic plugin block
+     - Added tiny inertials for zero-mass links (imu, radar)
+-->
+<robot name="jamal2_v5">
+
+  <link name="base">
+    <!-- <inertial>
+      <origin xyz="-0.010 0 0"/>
+      <mass value="11.75"/>
+      <inertia ixx="0.0565900000000" ixy="0.0" ixz="0.0" iyy="0.1660600000000" iyz="0.0" izz="0.2001200000000"/>
+    </inertial> -->
+    <inertial>
+    <origin rpy="0 0 0" xyz="0.0 0 0.0"/>
+      <mass value="12.8185384756311"/>
+      <inertia ixx="0.0565667940678376" ixy="-8.54731557026013e-06" ixz="3.411601276539e-05" iyy="0.0364645326398335" iyz="-4.86965244292946e-06" izz="0.0737588756462406"/>
+    </inertial>
+      <!-- <origin rpy="0 0 0" xyz="-0.025 0 -0.0005"/>
+      <mass value="13.2256112448737"/>
+      <inertia ixx="0.0574649406584405" ixy="-1.11608864587071e-05" ixz="-0.000327983144671164" iyy="0.0379676555450497" iyz="-6.76168747114003e-06" izz="0.0755303202855583"/>
+    </inertial> -->
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/base.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/base.dae"/>
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.3762 0.2 0.114"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!--
+  <link name="base_inertia">
+    <inertial>
+      <origin xyz="-0.010 0 0"/>
+      <mass value="11.75"/>
+      <inertia ixx="0.0565900000000" ixy="0.0" ixz="0.0" iyy="0.1660600000000" iyz="0.0" izz="0.2001200000000"/>
+    </inertial>
+  </link>
+  <joint name="trunk_to_base_inertia" type="fixed">
+    <parent link="trunk"/>
+    <child link="base_inertia"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  -->
+
+  <!-- FL LEG -->
+  <link name="FL_hip">
+    <inertial>
+      <origin xyz="-0.00339550828476409 -0.000904087285408195 -3.93218339349122E-05" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.00035687" ixy="0.0" ixz="0.0" iyy="0.00065235" iyz="0.0" izz="0.00052753"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/hip.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/hip.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.046"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_hip_joint" type="revolute">
+    <origin xyz="0.2709 0.0804499999999991 0" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="FL_hip"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.0472" upper="1.0472" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="FL_thigh">
+    <inertial>
+      <origin xyz="-0.000671046034244019 -0.0302253641306092 -0.0144678808109222" rpy="0 0 0"/>
+      <mass value="1.3"/>
+      <inertia ixx="0.00502768" ixy="0.0" ixz="0.0" iyy="0.00407764" iyz="0.0" izz="0.00172122"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/thigh.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/thigh.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.6707963267948966 0" xyz="-0.015 0 -0.1125"/>
+      <geometry>
+        <box size="0.225 0.0245 0.034"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder length="0.032" radius="0.041"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_thigh_joint" type="revolute">
+    <origin xyz="0 0.10705 0" rpy="0 0 0"/>
+    <parent link="FL_hip"/>
+    <child link="FL_thigh"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="3.4907" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="FL_calf">
+    <inertial>
+      <origin xyz="0.0103069670980445 8.8674414934875E-05 -0.0839291622348222" rpy="0 0 0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.0001228100000" ixy="0.0" ixz="0.0" iyy="0.0001254700000" iyz="0.0" izz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/calf.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/calf.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 -0.21 0" xyz="0.008 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.012" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0.0 0 -0.1175"/>
+      <geometry>
+        <box size="0.235 0.016 0.016"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_calf_joint" type="revolute">
+    <origin xyz="0.00167691666386546 0 -0.22499375091434" rpy="0 0 0"/>
+    <parent link="FL_thigh"/>
+    <child link="FL_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.67035" upper="-0.872665" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="FL_foot">
+    <inertial>
+      <origin xyz="0.00893731403573057 5.86075363651073E-06 0.0227015493807513" rpy="0 0 0"/>
+      <mass value="0.0320640218816045"/>
+      <inertia ixx="0.000004011650" ixy="0.0" ixz="0.0" iyy="0.000004180755" iyz="0.0" izz="0.000003635190"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/foot.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_foot_joint" type="fixed">
+    <origin xyz="-0.00157691666386468 5.00000000003276E-05 -0.23" rpy="0 0 0"/>
+    <parent link="FL_calf"/>
+    <child link="FL_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <!-- RL LEG -->
+  <link name="RL_hip">
+    <inertial>
+      <origin xyz="0.00339550828476404 -0.0009040872854085 3.93218339348513E-05" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.0003180000000" ixy="0.0" ixz="0.0" iyy="0.0004208600000" iyz="0.0" izz="0.0003061700000"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 3.1415 0"/>
+      <geometry>
+        <mesh filename="../dae/hip.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/hip.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.046"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_hip_joint" type="revolute">
+    <origin xyz="-0.2689 0.0804500000000009 0" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="RL_hip"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.0472" upper="1.0472" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="RL_thigh">
+    <inertial>
+      <origin xyz="-0.000671046033593636 -0.0302253641290889 -0.0144678808132316" rpy="0 0 0"/>
+      <mass value="1.3"/>
+      <inertia ixx="0.00502768" ixy="0.0" ixz="0.0" iyy="0.00407764" iyz="0.0" izz="0.00172122"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/thigh.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/thigh.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.6707963267948966 0" xyz="-0.015 0 -0.1125"/>
+      <geometry>
+        <box size="0.225 0.0245 0.034"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.008 0"/>
+      <geometry>
+        <cylinder length="0.032" radius="0.041"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_thigh_joint" type="revolute">
+    <origin xyz="0 0.10705 0" rpy="0 0 0"/>
+    <parent link="RL_hip"/>
+    <child link="RL_thigh"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5236" upper="4.5379" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="RL_calf">
+    <inertial>
+      <origin xyz="0.0126339989859747 8.86744077252255E-05 -0.0839238523331708" rpy="0 0 0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.0001224000000" ixy="0.0" ixz="0.0" iyy="0.0001254700000" iyz="0.0" izz="0.000003609600"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/calf.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/calf.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.013" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0.0 0 -0.1175"/>
+      <geometry>
+        <box size="0.235 0.016 0.016"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_calf_joint" type="revolute">
+    <origin xyz="-0.000650115239932358 0 -0.224999060776206" rpy="0 0 0"/>
+    <parent link="RL_thigh"/>
+    <child link="RL_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.67035" upper="-0.872665" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="RL_foot">
+    <inertial>
+      <origin xyz="0.00913734597626592 5.88313199131885E-06 0.0227015939594583" rpy="0 0 0"/>
+      <mass value="0.0320638174515656"/>
+      <inertia ixx="0.000000402415478" ixy="0.0" ixz="0.0" iyy="0.00000418078633" iyz="0.0" izz="0.00000362279264"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/foot.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_foot_joint" type="fixed">
+    <origin xyz="0.000550115239932258 5.00000000001888E-05 -0.23" rpy="0 0 0"/>
+    <parent link="RL_calf"/>
+    <child link="RL_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <!-- FR LEG -->
+  <link name="FR_hip">
+    <inertial>
+      <origin xyz="-0.00339550828476406 0.000904087285408264 3.93218339347566E-05" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.0003180000000" ixy="0.0" ixz="0.0" iyy="0.0004208600000" iyz="0.0" izz="0.0003061700000"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="3.1415 0 0"/>
+      <geometry>
+        <mesh filename="../dae/hip.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/hip.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.046"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_hip_joint" type="revolute">
+    <origin xyz="0.2709 -0.080450000000001 0" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="FR_hip"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.0472" upper="1.0472" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="FR_thigh">
+    <inertial>
+      <origin xyz="-0.00176952960662956 0.0302157290390143 -0.014525532740339" rpy="0 0 0"/>
+      <mass value="1.3"/>
+      <inertia ixx="0.00502768" ixy="0.0" ixz="0.0" iyy="0.00407764" iyz="0.0" izz="0.00172122"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/thigh_mirror.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/thigh_mirror.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.6707963267948966 0" xyz="-0.015 0 -0.1125"/>
+      <geometry>
+        <box size="0.225 0.0245 0.034"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.008 0"/>
+      <geometry>
+        <cylinder length="0.032" radius="0.041"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_thigh_joint" type="revolute">
+    <origin xyz="0 -0.10705 0" rpy="0 0 0"/>
+    <parent link="FR_hip"/>
+    <child link="FR_thigh"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="3.4907" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="FR_calf">
+    <inertial>
+      <origin xyz="0.0102527392769851 -1.13256009847129E-05 -0.0839295728842211" rpy="0 0 0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.0001231600000" ixy="0.0" ixz="0.0" iyy="0.0001254700000" iyz="0.0" izz="0.000002850100"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/calf.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/calf.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.013" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0.0 0 -0.1175"/>
+      <geometry>
+        <box size="0.235 0.016 0.016"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_calf_joint" type="revolute">
+    <origin xyz="0.00173114446018699 0 -0.224993340210012" rpy="0 0 0"/>
+    <parent link="FR_thigh"/>
+    <child link="FR_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.67035" upper="-0.872665" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="FR_foot">
+    <inertial>
+      <origin xyz="0.00893728377743531 5.90963237645514E-06 0.0227015439249714" rpy="0 0 0"/>
+      <mass value="0.0320640030654593"/>
+      <inertia ixx="0.0000003998133" ixy="0.0" ixz="0.0" iyy="0.0000004180799" iyz="0.0" izz="0.000003648803"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/foot.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_foot_joint" type="fixed">
+    <origin xyz="-0.0016311444601869 -5.00000000001333E-05 -0.23" rpy="0 0 0"/>
+    <parent link="FR_calf"/>
+    <child link="FR_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <!-- RR LEG -->
+  <link name="RR_hip">
+    <inertial>
+      <origin xyz="0.0033955082847642 0.000904087285408431 -3.93218339348663E-05" rpy="0 0 0"/>
+      <mass value="0.9"/>
+      <inertia ixx="0.0003180000000" ixy="0.0" ixz="0.0" iyy="0.0004208600000" iyz="0.0" izz="0.0003061700000"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="3.1415 3.1415 0"/>
+      <geometry>
+        <mesh filename="../dae/hip.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/hip.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 -0.08 0" />
+      <geometry>
+        <cylinder length="0.04" radius="0.046" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.04" radius="0.046"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_hip_joint" type="revolute">
+    <origin xyz="-0.2689 -0.0804499999999991 0" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="RR_hip"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.0472" upper="1.0472" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="RR_thigh">
+    <inertial>
+      <origin xyz="-0.00176953234561411 0.0302157260207732 -0.014525535930203" rpy="0 0 0"/>
+      <mass value="1.3"/>
+      <inertia ixx="0.00502768" ixy="0.0" ixz="0.0" iyy="0.00407764" iyz="0.0" izz="0.00172122"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/thigh_mirror.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/thigh_mirror.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0 0 -0.1065" />
+      <geometry>
+        <box size="0.11 0.0245 0.034" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.6707963267948966 0" xyz="-0.015 0 -0.1125"/>
+      <geometry>
+        <box size="0.225 0.0245 0.034"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="1.5707963267948966 0 0" xyz="0 0.008 0"/>
+      <geometry>
+        <cylinder length="0.032" radius="0.041"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_thigh_joint" type="revolute">
+    <origin xyz="0 -0.10705 0" rpy="0 0 0"/>
+    <parent link="RR_hip"/>
+    <child link="RR_thigh"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5236" upper="4.5379" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="RR_calf">
+    <inertial>
+      <origin xyz="0.013898625304367 -1.13255977724769E-05 -0.0839310604501493" rpy="0 0 0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.0001222200000" ixy="0.0" ixz="0.0" iyy="0.0001254700000" iyz="0.0" izz="0.000003787300"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/calf.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/umar/jamal_ws/src/jamal03_description/meshes/dae/calf.dae"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin rpy="0 -0.2 0" xyz="0.01 0 -0.06" />
+      <geometry>
+        <cylinder length="0.12" radius="0.013" />
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin rpy="0 1.5707963267948966 0" xyz="0.0 0 -0.1175"/>
+      <geometry>
+        <box size="0.235 0.016 0.016"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_calf_joint" type="revolute">
+    <origin xyz="-0.00191474156111915 0 -0.224991852663056" rpy="0 0 0"/>
+    <parent link="RR_thigh"/>
+    <child link="RR_calf"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.67035" upper="-0.872665" effort="60" velocity="30.02"/>
+  </joint>
+
+  <link name="RR_foot">
+    <inertial>
+      <origin xyz="0.00913733992079968 5.86350800374502E-06 0.0227015224447085" rpy="0 0 0"/>
+      <mass value="0.0368002676392"/>
+      <inertia ixx="0.00000402877298" ixy="0.0" ixz="0.0" iyy="0.00000418077603" iyz="0.0" izz="0.00000361810947"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="../dae/foot.dae"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_foot_joint" type="fixed">
+    <origin xyz="0.00181474156111877 -5.000000000005E-05 -0.23" rpy="0 0 0"/>
+    <parent link="RR_calf"/>
+    <child link="RR_foot"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <!-- Sensors & extras -->
+  <link name="imu">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="-0.02557 0 0.04232" rpy="0 0 0"/>
+    <parent link="base"/>
+    <child link="imu"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <link name="radar">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.001"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+  </link>
+  <joint name="radar_joint" type="fixed">
+    <origin xyz="0.28945 0 -0.046825" rpy="0 2.8782 0"/>
+    <parent link="base"/>
+    <child link="radar"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+
+  <!-- Removed Gazebo Classic plugin; use ros_gz_sim create + (later) gz_ros2_control -->
+</robot>

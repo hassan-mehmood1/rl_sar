@@ -1,0 +1,1 @@
+Put these files here: base.obj, hip.obj, thigh.obj, thigh_mirror.obj, calf.obj, foot.obj
