@@ -57,12 +57,8 @@ public:
         0.00, 1.36, -2.65,
         0.00, 1.36, -2.65,
         0.00, 1.36, -2.65,
-<<<<<<< HEAD
-        0.00, 1.36, -2.65
-=======
         0.00, 1.36, -2.65,
         0.00, 0.00, 0.00, 0.00
->>>>>>> f3da3a2 (Add Jamal robot deployment configuration)
     };
     bool stand_from_passive = true;
 
